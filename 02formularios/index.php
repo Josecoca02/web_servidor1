@@ -52,5 +52,12 @@ Si introducimos "5" y "Hola mundo" se mostrará un encabezado
     </h2>
 </div> 
 
+<div>
+    <h2>
+        <a href="formulario6.php">Ejercicio 6</a>
+        <p>
+            FACTORIAL DE UN Numero
+    </h2>
+</div> 
 </body>
 </html>
