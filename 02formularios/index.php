@@ -10,21 +10,21 @@
 <h1> Ejercicios de la clase de formularios </h1>
 <div>
     <h2>
-        <a href="formularios1.php">Ejercicio 1</a>
+        <a href="ejercicios/formularios1.php">Ejercicio 1</a>
         <p>
         FORMULARIOS QUE RECIBA UN NOMBRE Y UNA EDAD Y LOS MUESTRE POR PANTALLA
     </h2>
 </div> 
 <div>
     <h2>
-        <a href="formulario2.php">Ejercicio 2</a>
+        <a href="ejercicios/formulario2.php">Ejercicio 2</a>
         <p>
         Crear un formulario que reciba un número. Generar una lista dinámicamente con tantos elementos como se haya indicado
     </h2>
 </div> 
 <div>
     <h2>
-        <a href="formulario3.php">Ejercicio 3</a>
+        <a href="ejercicios/formulario3.php">Ejercicio 3</a>
         <p>
         Crear un formulario que reciba el nombre y la edad de una persona y
 muestre por pantalla si es menor de edad, es adulta, o está jubilada en función
@@ -36,7 +36,7 @@ a su edad. Además:
 </div> 
 <div>
     <h2>
-        <a href="formulario4.php">Ejercicio 4</a>
+        <a href="ejercicios/formulario4.php">Ejercicio 4</a>
         <p>
         Crear un formulario que reciba una frase y un número del 1 al 6. Habrá que mostrar la frase
 en un encabezado de dicho número.
@@ -46,7 +46,7 @@ Si introducimos "5" y "Hola mundo" se mostrará un encabezado
 </div> 
 <div>
     <h2>
-        <a href="formularios5.php">Ejercicio 5</a>
+        <a href="ejercicios/formularios5.php">Ejercicio 5</a>
         <p>
         Formulario que reciba dos números. Devolver el resultado de elevar el primero al segundo. 
     </h2>
@@ -54,7 +54,7 @@ Si introducimos "5" y "Hola mundo" se mostrará un encabezado
 
 <div>
     <h2>
-        <a href="formulario6.php">Ejercicio 6</a>
+        <a href="ejercicios/formulario6.php">Ejercicio 6</a>
         <p>
             FACTORIAL DE UN Numero
     </h2>

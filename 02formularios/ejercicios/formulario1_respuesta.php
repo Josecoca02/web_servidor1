@@ -6,8 +6,7 @@
     echo "<p>$nombre</p>";
     echo "<p>$edad</p>";
 
-    /*CREAR FORMULARIO QUE RECIBA UN NUMERO
-    HABRA QUE CREAR UNA LISTA CON TANTOS NUMEROS COMO SE HAYA INDICADO */
+   
 
     
 ?>
