@@ -34,16 +34,16 @@
     <div>
         <h2>Ejercicio 2</h2>
         <p>Crear un formulario que reciba un número. Generar una lista dinámicamente con tantos elementos como se haya indicado</p>
-        <form action="" method="get">
+        <form action="" method="post">
         <label>Numero </label><br>
         <input type="text" name="numero"><br><br>
         <input type="hidden" name="f" value="ej2">
         <input type="submit" value="Enviar">
         </form>
         <?php
-            if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                if ($_GET["f"] == "ej2") {
-                    $n= $_GET["numero"];
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if ($_POST["f"] == "ej2") {
+                    $n= $_POST["numero"];
                     for($i = 1; $i <= $n; $i++) {
                         echo "<li>$i</li>";
                     }
@@ -60,7 +60,7 @@ a su edad. Además:
 - Convertir la edad a un número entero
 - Convertir el nombre introducido a minúsculas salvo la primera letra, que será mayúscula
 </p>
-        <form action="" method="get">
+        <form action="" method="post">
         <label>Nombre </label><br>
         <input type="text" name="nombre"><br><br>
          <label>Edad </label><br>
@@ -70,10 +70,10 @@ a su edad. Además:
        
         </form>
         <?php
-            if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                if ($_GET["f"] == "ej3") {
-                    $nombre = $_GET["nombre"];
-                    $edad = $_GET["edad"];
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if ($_POST["f"] == "ej3") {
+                    $nombre = $_POST["nombre"];
+                    $edad = $_POST["edad"];
                     $integer = intval($edad);
                     $nombre = ucwords(strtolower($nombre));
                 
@@ -96,7 +96,7 @@ a su edad. Además:
 en un encabezado de dicho número.
 
 Si introducimos "5" y "Hola mundo" se mostrará un encabezado </p>
-        <form action="" method="get">
+        <form action="" method="post">
         <label>Frase </label><br>
     <input type="text" name="frase"><br><br>
     <label>Encabezado </label><br>
@@ -106,10 +106,10 @@ Si introducimos "5" y "Hola mundo" se mostrará un encabezado </p>
        
         </form>
         <?php
-            if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                if ($_GET["f"] == "ej4") {
-                    $frase = $_GET["frase"];
-                    $e = $_GET["encabezado"];
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if ($_POST["f"] == "ej4") {
+                    $frase = $_POST["frase"];
+                    $e = $_POST["encabezado"];
                 
                     echo "<h$e>$frase</h$e>";
                 
@@ -121,35 +121,30 @@ Si introducimos "5" y "Hola mundo" se mostrará un encabezado </p>
 
         </div>
         <div>
-        <h2>Ejercicio 5</h2>
+        <h2 id ="ej5">Ejercicio 5</h2>
         <p>Formulario que reciba dos números. Devolver el resultado de elevar el primero al segundo. </p>
-        <form action="" method="get">
+        <form action="#ej5" method="post">
         <label>Base </label><br>
         <input type="text" name="base"><br><br>
         <label>Exponente </label><br>
         <input type="text" name="exponente"><br><br>
-        <input type="submit" value="Enviar">
         <input type="hidden" name="f" value="ej5">
+        <input type="submit" value="Enviar">
+        
        
         </form>
         <?php
-            if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                if ($_GET["f"] == "ej5") {
-                    $base = $_GET["base"];
-                    $exponente = $_GET["exponente"];
-                
-                    $resultado = 1;
-                
-                    if ($exponente < 0) {
-                        echo "<p>El exponente debe ser positivo</p>";
-                    } else if ($exponente == 0) {
-                        echo "<p>$resultado</p>";
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if ($_POST["f"] == "ej5") {
+                    require 'funciones/potencia.php';
+                    $base = $_POST["base"];
+                    $exponente = $_POST["exponente"];
+                    $resultado = potencia($base, $exponente);
+                    if ($resultado == -1) {
+                        echo "<p>El número no puede ser negativo</p>";
                     } else {
-                        for ($i = 1; $i <= $exponente; $i++) {
-                            $resultado = $resultado * $base;
-                        }
-                        echo "<p>$resultado</p>";
-                    }    
+                        echo "<p>El resultado es $resultado</p>";
+                    }
                 }
             }
         ?>
@@ -157,9 +152,9 @@ Si introducimos "5" y "Hola mundo" se mostrará un encabezado </p>
         </div>
 
         <div>
-        <h2>Ejercicio 6</h2>
+        <h2 id="ej6">Ejercicio 6</h2>
         <p>FACTORIAL DE UN Numero</p>
-        <form action="" method="get">
+        <form action="#ej6" method="post">
         <label>Numero </label><br>
         <input type="text" name="numero"><br><br>
         <input type="submit" value="Enviar">
@@ -167,27 +162,47 @@ Si introducimos "5" y "Hola mundo" se mostrará un encabezado </p>
         
         </form>
         <?php
-            if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                if ($_GET["f"] == "ej6") {
-                    $numero = $_GET["numero"];
-
-    $resultado = 1;
-
-    if ($numero >= 1) {
-        for ($i = 1; $i <= $numero; $i++) {
-            $resultado = $resultado * $i;
-            //  Sintaxis alternativa: $resultado *= $i;
-        }
-        echo "<p>$resultado</p>";
-    } else {
-        echo "<p>El número debe ser igual o más que 1</p>";
-    }
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if ($_POST["f"] == "ej6") {
+                  require 'funciones/factorial.php';
+                  $numero = $_POST["numero"];
+                  $resultado = factorial($numero);
+                  echo "<p> El resultado es $resultado</p>";
                 }
             }
         ?>
 
         </div>
         
+        <div>
+        <h2 id="ej8">Ejercicio 8</h2>
+        <p>FACTORIAL DE UN Numero</p>
+        <form action="#ej8" method="post">
+        <label>Numero </label><br>
+        <input type="text" name="numero"><br><br>
+        <input type="hidden" name="f" value="ej8">
+        <input type="submit" value="Enviar">
+        
+        </form>
+        <?php
+        
+                    $numero = $_POST["numero"];
+                    echo"<table>";
+                    echo "<tr><th>Tabla del $numero </th></tr>";
+                    for($i=1; $i <=12; $i++){
+                        echo"<tr>";
+                        echo "<td>$numero x $i</td>";
+                        echo "<td>" . $numero * $i . "</td>";
+                        echo "</tr>";
+                    }
+                    echo"</table>";
+                    
+                    
+                
+            
+        ?>
+
+        </div>
             
 </body>
 </html>

@@ -1,7 +1,7 @@
 <h1>Ejercicio5</h1>
 <?php
-     $base = $_GET["base"];
-     $exponente = $_GET["exponente"];
+     $base = $_POST["base"];
+     $exponente = $_POST["exponente"];
  
      $resultado = 1;
  

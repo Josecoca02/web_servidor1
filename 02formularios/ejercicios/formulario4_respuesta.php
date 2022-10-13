@@ -1,6 +1,6 @@
 <?php
-    $frase = $_GET["frase"];
-    $e = $_GET["encabezado"];
+    $frase = $_POST["frase"];
+    $e = $_POST["encabezado"];
 
     echo "<h$e>$frase</h$e>";
 

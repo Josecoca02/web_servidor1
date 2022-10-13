@@ -1,8 +1,8 @@
 <h1>Respueta Formulario 3</h1>
 
 <?php
-    $nombre = $_GET["nombre"];
-    $edad = $_GET["edad"];
+    $nombre = $_POST["nombre"];
+    $edad = $_POST["edad"];
     $integer = intval($edad);
     $nombre = ucwords(strtolower($nombre));
 

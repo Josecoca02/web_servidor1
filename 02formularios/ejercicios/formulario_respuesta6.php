@@ -1,6 +1,6 @@
 <h1>Ejercicio 6</h1>
 <?php
-    $numero = $_GET["numero"];
+    $numero = $_POST["numero"];
 
     $resultado = 1;
 
