@@ -8,23 +8,22 @@
    
 </head>
 <body>
-    <h1>vidiojuego
-    </h1>
+    <h1>vidiojuego</h1>
 <form action="ejercicio_consola.php" method="post">
 <label> Nombre:</label><br>
     <input type ="text" name="nombre"><br><br>
-  <label> Consola</label>
+  <label> Consola</label><br>
   <select name="consolas">
     <option value="ps4">Plastation 4 </option>
     <option value="ps5">Plastation 5 </option>
     <option value="xbox">X box </option>
     <option value="switch"> Nintendo Switch</option>
   </select><br><br>
+  <label>edicion especial</label><br>
   <input type ="checkbox" name="especial" value="si"><br>
     <input type="submit" value ="Enviar">
-
-  <input type="submit" value="Enviar">
 </form>
+
     <?php
         if ($_SERVER ["REQUEST_METHOD"] == "POST ") {
             $nombre = $_POST["nombre"];
@@ -52,7 +51,7 @@
             if($especial =="si") {
                 $precio *=1.25;
             }
-            echo "<h3> EL VIDEOJUEGO $NOMBRE VALE $PRECIO </h3>";
+            echo "<h3> EL VIDEOJUEGO $nombre VALE $precio </h3>";
         }
     ?>
 

@@ -8,13 +8,26 @@
 </head>
 <body>
     <form action="ejercicio_prueba.php" method="post">
-    <label> Número</label><br>
-    <input type ="text" name="numero"><br><br>
-    <input type ="submit" value="Enviar">
-</form>
+        <label>Número</label><br>
+        <input type="text" name="numero"><br><br>
+        <input type="hidden" name="f" value="f_numero">
+        <input type="submit" value="Enviar">
+    </form>
+
+    <form action="ejercicio_prueba.php" method="post">
+        <label>Nombre</label><br>
+        <input type="text" name="nombre"><br><br>
+        <input type="hidden" name="f" value="f_nombre">
+        <input type="submit" value="Enviar">
+    </form>
+
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            echo $_POST ["numero"];
+            if ( $_POST["f"] == "f_numero") {
+                echo "<p>ESTOY EN f_numero</p>";
+            }else if ($_POST["f"] == "f_nombre"){
+                echo "<p> ESTOY EN f_nombre </p>";
+            }
         }
     ?>
 
