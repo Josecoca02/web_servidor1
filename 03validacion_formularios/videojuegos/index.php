@@ -13,6 +13,7 @@
          if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $temp_titulo = depurar($_POST["titulo"]);
             $temp_precio = depurar($_POST["precio"]);
+            $temp_descripcion = depurar($_POST["descripcion"]);
 
             if (empty($temp_titulo)) {
                 $err_titulo = "El título es obligatorio";
@@ -23,6 +24,17 @@
                 } else {
                     //¡EXITO!
                     $titulo = $temp_titulo;
+                }
+            }
+            if (empty($temp_descripcion)) {
+                $err_descripcion = "La descripcion  es obligatorio";
+                // VALIDAR QUE TENGA COMO MUCHO TENGA 40 CARACTERES
+            } else {
+                if(strlen($temp_descripcion) > 255) {
+                    $err_descripcion = "La descrición no puede tener más de 255 caracteres";
+                } else {
+                    //¡EXITO!
+                    $descripcion = $temp_descripcion;
                 }
             }
 
@@ -48,9 +60,10 @@
             }
         }
 
-        if (isset($titulo) && isset($precio)) {
+        if (isset($titulo) && isset($precio) && isset($descripcion)) {
             echo"<p>$titulo</p>";
             echo "<p>$precio</p>";
+            echo "<p>$descripcion</p>";
         }
 
         function depurar($dato) {
@@ -69,6 +82,11 @@
         <p>Precio: <input type="text" name="precio">
             <span class="error">
                 * <?php if(isset($err_precio)) echo $err_precio ?>
+            </span>
+        </p>
+        <p>Descripcion: <input type="text" name="descripcion">
+            <span class="error">
+                * <?php if(isset($err_descripcion)) echo $err_descripcion ?>
             </span>
         </p>
         <p><input type="submit" value="Crear"></p>
