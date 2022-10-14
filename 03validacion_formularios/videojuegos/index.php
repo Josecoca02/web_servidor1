@@ -16,11 +16,41 @@
 
             if (empty($temp_titulo)) {
                 $err_titulo = "El título es obligatorio";
+                // VALIDAR QUE TENGA COMO MUCHO TENGA 40 CARACTERES
+            } else {
+                if(strlen($temp_titulo) > 40) {
+                    $err_titulo = "El titulo no puede tener más de 40 caracteres";
+                } else {
+                    //¡EXITO!
+                    $titulo = $temp_titulo;
+                }
             }
 
             if (empty($temp_precio)) {
                 $err_precio = "El precio es obligatorio";
+            }else {
+                $temp_precio = filter_var($temp_precio, FILTER_VALIDATE_FLOAT);
+                if (!$temp_precio) {
+                    
+                    $err_precio= "El precio deber ser un número";
+                }else {
+                    $temp_precio = round($temp_precio, 2);
+                    if($temp_precio < 0){
+                        $err_precio = "El precio no puede ser negativo";
+                    }else if ($temp_precio >= 10000) {
+                        $err_precio ="El precio no puede ser igual o  superior a 10000";
+                    }else {
+                        //¡EXITO!
+                       $precio = $temp_precio;
+                    }
+
+                }
             }
+        }
+
+        if (isset($titulo) && isset($precio)) {
+            echo"<p>$titulo</p>";
+            echo "<p>$precio</p>";
         }
 
         function depurar($dato) {
