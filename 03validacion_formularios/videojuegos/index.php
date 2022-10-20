@@ -14,7 +14,17 @@
             $temp_titulo = depurar($_POST["titulo"]);
             $temp_precio = depurar($_POST["precio"]);
             $temp_descripcion = depurar($_POST["descripcion"]);
-
+            if(isset($_POST["consola"])) {
+                $temp_consola = depurar($_POST["consola"]);
+            } else {
+                $temp_consola = "";
+            }
+            
+            if (empty($temp_consola)) {
+                $err_consola ="La consola es obligatorio";
+            }else {
+                $consola = $temp_consola;
+            }
             if (empty($temp_titulo)) {
                 $err_titulo = "El título es obligatorio";
                 // VALIDAR QUE TENGA COMO MUCHO TENGA 40 CARACTERES
@@ -60,9 +70,10 @@
             }
         }
 
-        if (isset($titulo) && isset($precio) && isset($descripcion)) {
+        if (isset($titulo) && isset($precio) && isset($descripcion) && isset($consola)) {
             echo"<p>$titulo</p>";
             echo "<p>$precio</p>";
+            echo "<p>$consola</p>";
             echo "<p>$descripcion</p>";
         }
 
@@ -84,11 +95,23 @@
                 * <?php if(isset($err_precio)) echo $err_precio ?>
             </span>
         </p>
-        <p>Descripcion: <input type="text" name="descripcion">
+        <p>Descripcion: <textarea type="text" name="descripcion">
             <span class="error">
                 * <?php if(isset($err_descripcion)) echo $err_descripcion ?>
             </span>
         </p>
+        <p>COnsola:
+            <select name="consola">
+            <option value="" selected disabled hidden>Elige una consola </option>
+            <option value="Ps4">Playstation 4 </option>
+            <option value="Ps5">Playstation 5 </option>
+            <option value="Switch">Nintendo Swith </option>
+            </select>
+            <span class="error">
+                * <?php if(isset($err_consola)) echo $err_consola?>
+                </span>
+        </p>
+
         <p><input type="submit" value="Crear"></p>
     </form>
 </body>
