@@ -9,9 +9,9 @@
 <body>
     <form action="respuesta1.php" method="post">
         <label>Numero1 </label><br>
-        <input type="text" name="numeroa"><br><br>
-        <label>Numero2</label><br>
-        <input type="text" name="numerob"><br><br>
+        <input type="text" name="numeroa">
+      <!--   <label>Numero2</label><br>
+        <input type="text" name="numerob"><br><br> -->
         <input type="submit" value="Enviar">
     </form>
 </body>

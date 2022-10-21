@@ -10,8 +10,9 @@
 
 <body>
     <form action="respuesta2.php" method="post">
-
-
+    <label>Dni</label><br>
+    <input type="text" name="dni"><br><br>
+    <input type="submit" value="Enviar">
     </form>
 
 </body>
