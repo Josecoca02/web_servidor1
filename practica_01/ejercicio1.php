@@ -8,10 +8,10 @@
 </head>
 <body>
     <form action="respuesta1.php" method="post">
-        <label>Numero1 </label><br>
-        <input type="text" name="numeroa">
-      <!--   <label>Numero2</label><br>
-        <input type="text" name="numerob"><br><br> -->
+        <label>NumeroCantidad </label><br>
+        <input type="text" name="numeroCantidad"><br><br>
+        <label>NumeroInicio </label><br>
+        <input type="text" name="numeroInicio"><br><br>
         <input type="submit" value="Enviar">
     </form>
 </body>

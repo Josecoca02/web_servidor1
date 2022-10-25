@@ -1,38 +1,28 @@
 <?php
-   $numeroa =$_POST["numeroa"];
+   $numeroCantidad =$_POST["numeroCantidad"];
+   $numeroInicio=$_POST["numeroInicio"];
+   $contador=0;
 
- /*       for($i=2 ; $i<= $numeroa; $i++){
-            if( $numeroa%i==0){
-                $primo=false;
-            }
-           
-        }
-        if($primo==true){
-            echo "($numeroa )";
-            $acomulados++;
-        }
-        $numeroa+=1;
-        $primo=true;;
-         */
-        if(esPrimo($numeroa)){
-            echo 'Es primo';
-        }else{
-            echo 'No es primo';
-        }
-        
-        function esPrimo($numeroa)
-        {
-            if(!is_numeric($numeroa))
-                //Comprobamos si es un número valido, ya que sino nos dara un error 500. 
-                return false;
-        for ($i = 2; $i < $numeroa; $i++) {
-        
-            if (($numeroa % $i) == 0) {
-                
-                // No es primo 🙁
-                return false;
-    
-            }
-    
-        }
+   if($numeroInicio ==1) {
+      echo "1 si es un numero primo <br>";
+      echo "2 no es un numero primo <br>";
+      $contador +=1;
+   }
+
+   if($numeroInicio ==2){
+      echo"2 no es un numero primo <br>";
+   }
+   for($i =$numeroInicio; $i <= $numeroCantidad; $i++){
+      for($a= 2; $a<$i; $a++) {
+         if($i%$a ==0){
+            echo "";
+            break;
+         }
+         if($a ==$i-1) {
+            echo "$i si es numero primo <br>";
+            $contador += 1;
+         }
+      }
+   }
+   echo "<br>Hay $contador número primos : ";
 ?>
