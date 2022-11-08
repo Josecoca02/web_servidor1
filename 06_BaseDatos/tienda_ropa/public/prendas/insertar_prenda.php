@@ -8,7 +8,7 @@
     <title>Nueva Prenda</title>
 </head>
 <body>
-    <?php
+<?php
         require '../../util/base_de_datos.php';
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,7 +32,12 @@
                 
 
                 if ($conexion -> query($sql) == "TRUE") {
-                    echo "<p>Prenda insertada</p>";
+                ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Se ha insertado la prenda
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php
                 } else {
                     echo "<p>Error al insertar</p>";
                 }

@@ -11,8 +11,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="http://localhost/06_bases_de_datos/tienda_ropa/public/">Inicio</a>
-        <a class="nav-link" href="http://localhost/06_bases_de_datos/tienda_ropa/public/prendas/">Prendas</a>
+        <a class="nav-link active" aria-current="page" href="http://localhost/06_BaseDatos/tienda_ropa/public/">Inicio</a>
+        <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/prendas/">Prendas</a>
         <a class="nav-link" href="#">Clientes</a>
       </div>
     </div>
