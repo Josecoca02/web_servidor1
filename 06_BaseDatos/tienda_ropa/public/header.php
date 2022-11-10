@@ -13,7 +13,7 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="http://localhost/06_BaseDatos/tienda_ropa/public/">Inicio</a>
         <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/prendas/">Prendas</a>
-        <a class="nav-link" href="#">Clientes</a>
+        <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/clientes/">Clientes</a>
       </div>
     </div>
   </div>

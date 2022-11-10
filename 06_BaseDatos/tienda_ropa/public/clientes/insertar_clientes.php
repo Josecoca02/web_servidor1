@@ -14,22 +14,27 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $usuario = $_POST["usuario"];
             $nombre = $_POST["nombre"];
-            $primer_apellido = $_POST["primer_apellido"];
-            $segundo_apellido = $_POST["segundo_apellido"];
+            $apellido_1 = $_POST["apellido_1"];
+            $apellido_2 = $_POST["apellido_2"];
             $fecha_nacimiento = $_POST["fecha_nacimiento"];
 
-            if (!empty($usuario) && !empty($nombre) && 
-                !empty($primer_apellido && 
-                !empty($fecha_nacimiento))) {
+            $file_name = $_FILES["imagen"]["name"];
+             $file_temp_name = $_FILES["imagen"]["tmp_name"];
+             $path = "../../resources/images/avatar/" . $file_name;
 
-                $segundo_apellido = 
-                    !empty($segundo_apellido) ? "'$segundo_apellido'" : "NULL";
+            if (!empty($usuario) && !empty($nombre) && 
+                !empty($apellido_1 && 
+                !empty($fecha_nacimiento))) {
+                    $imagen = "/resources/images/avatar/" . $file_name;
+
+                $apellido_2 = 
+                    !empty($apellido_2) ? "'$apellido_2'" : "NULL";
     
 
                 $sql = "INSERT INTO clientes (usuario, nombre, 
-                    primer_apellido, segundo_apellido, 
+                    apellido_1, apellido_2, 
                     fecha_nacimiento) VALUES ('$usuario', '$nombre',
-                    '$primer_apellido', $segundo_apellido,
+                    '$apellido_1', $apellido_2,
                     '$fecha_nacimiento')";
 
                 if ($conexion -> query($sql) == "TRUE") {
@@ -38,7 +43,10 @@
                     echo "<p>Error al insertar</p>";
                 }
             }
+            
         }
+
+        
     ?>
 
     <div class="container">
@@ -57,16 +65,20 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-label">Primer apellido</label>
-                        <input class="form-control" type="text" name="primer_apellido">
+                        <input class="form-control" type="text" name="apellido_1">
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-label">Segundo apellido</label>
-                        <input class="form-control" type="text" name="segundo_apellido">
+                        <input class="form-control" type="text" name="apellido_2">
                     </div>
                     <div class="form-group mb-3">
                         <label class="form-label">Fecha de nacimiento</label>
                         <input class="form-control" type="date" name="fecha_nacimiento">
                     </div>
+                    <div class="form-group mb-3">
+                         <label class="form-label">AVATAR</label>
+                         <input class="form-control" type="file" name="imagen">
+                     </div>
                     <button class="btn btn-primary" type="submit">Crear</button>
                 </form>
             </div>
