@@ -35,25 +35,24 @@
                             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 $id = $_POST["id"];
                                 //CONSULTA PARA COGER LA RUTA DE LA IMAGEN Y BORRARLA
-                                $sql = "SELECT imagen FROM clientes WHERE id = '$id'";
-                                $resultado = $conexion -> query($sql);
+                                // $sql = "SELECT imagen FROM clientes WHERE id = '$id'";
+                                // $resultado = $conexion -> query($sql);
 
-                                if ($resultado -> num_rows > 0) {
-                                    while($fila = $resultado -> fetch_assoc()) {
-                                        $imagen = $fila["imagen"];
+                                // if ($resultado -> num_rows > 0) {
+                                //     while($fila = $resultado -> fetch_assoc()) {
+                                //         $imagen = $fila["imagen"];
                                         
-                                    }
-                                    unlink("../.." . $imagen);
-                                }
+                                //     }
+                                //     unlink("../.." . $imagen);
+                                // }
 
                                 //CONSULTA PARA BORRAR LA PRENDA DE LA BASE DE DATOS
                                 $sql = "DELETE FROM clientes WHERE id = '$id'";
 
                                 if ($conexion -> query($sql)) {
                                 ?>
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        Se ha borrado el cliente
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <div class="alert alert-danger" role="alert">
+                                       usuario Borrado
                                     </div>
                                 <?php
                                 } else {

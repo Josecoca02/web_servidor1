@@ -11,9 +11,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="http://localhost/06_BaseDatos/tienda_ropa/public/">Inicio</a>
-        <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/prendas/">Prendas</a>
-        <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/clientes/">Clientes</a>
+        <a class="nav-link active" aria-current="page" href="http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/">Inicio</a>
+        <a class="nav-link" href="http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/prendas/">Prendas</a>
+        <a class="nav-link" href="http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/clientes/">Clientes</a>
+        <a class="nav-link" href="http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/compras/">Compras</a>
+
       </div>
     </div>
   </div>

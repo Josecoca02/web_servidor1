@@ -18,14 +18,14 @@
             $apellido_2 = $_POST["apellido_2"];
             $fecha_nacimiento = $_POST["fecha_nacimiento"];
 
-            $file_name = $_FILES["imagen"]["name"];
-             $file_temp_name = $_FILES["imagen"]["tmp_name"];
-             $path = "../../resources/images/avatar/" . $file_name;
+            // $file_name = $_FILES["imagen"]["name"];
+            //  $file_temp_name = $_FILES["imagen"]["tmp_name"];
+            //  $path = "../../resources/images/avatar/" . $file_name;
 
             if (!empty($usuario) && !empty($nombre) && 
                 !empty($apellido_1 && 
                 !empty($fecha_nacimiento))) {
-                    $imagen = "/resources/images/avatar/" . $file_name;
+                    // $imagen = "/resources/images/avatar/" . $file_name;
 
                 $apellido_2 = 
                     !empty($apellido_2) ? "'$apellido_2'" : "NULL";
@@ -38,9 +38,18 @@
                     '$fecha_nacimiento')";
 
                 if ($conexion -> query($sql) == "TRUE") {
-                    echo "<p>Cliente insertado</p>";
+                ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Se inserto el Usuario Con exito
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                <?php
                 } else {
-                    echo "<p>Error al insertar</p>";
+                    ?>
+                    <div class="alert alert-danger" role="alert">
+                       No se logro eliminar al Usuario
+                    </div>
+                <?php
                 }
             }
             
@@ -75,10 +84,10 @@
                         <label class="form-label">Fecha de nacimiento</label>
                         <input class="form-control" type="date" name="fecha_nacimiento">
                     </div>
-                    <div class="form-group mb-3">
+                    <!-- <div class="form-group mb-3">
                          <label class="form-label">AVATAR</label>
                          <input class="form-control" type="file" name="imagen">
-                     </div>
+                     </div> -->
                     <button class="btn btn-primary" type="submit">Crear</button>
                 </form>
             </div>
