@@ -10,24 +10,25 @@
 </head>
 
 <body>
-    <?php
+     <?php
     $cesta = [
         ["Pringels",  3, 3],
         ["Vaso",  2, 5],
-        ["Teclado Hyper x",  90, 1],
+        ["Teclado Hyper x",  99, 1],
         ["Perfume  Hugo Boss", 45, 2]
     ];
     $producto = array_column($cesta, 0);
     $precio = array_column($cesta, 1);
     $cantidad = array_column($cesta, 2);
-    $newCesta = [];
-for($i = 0; $i < count($cesta); $i++){
-   array_push($newCesta, [$cesta[$i][0], $cesta[$i][1], $cesta[$i][2], $cesta[$i][1]*$cesta[$i][2]]);
-}
+//     $newCesta = [];
+// for($i = 0; $i < count($cesta); $i++){
+//    array_push($newCesta, [$cesta[$i][0], $cesta[$i][1], $cesta[$i][2], $cesta[$i][1]*$cesta[$i][2]]);
+// }
     
     $totalprecio = array_sum($precio);
     $totalproducto =  count($producto);
     array_multisort($producto, SORT_ASC,  $precio, $cesta);
+   
     ?>
     <div class="row">
         <div class="col-5">
@@ -42,21 +43,27 @@ for($i = 0; $i < count($cesta); $i++){
                 <?php
                 foreach ($cesta as $cesta) {
                     list($producto, $precio, $cantidad) = $cesta;
+                    // $cantidadTotal = $cantidadTotal + $cantidad;
+                    $subtotale = $precio*$cantidad;
+                    // $preciototale = $preciototale + $subtotale;
+                    // $nProductos = $nProductos + $cantidad;
                 ?>
                     <tr>
                         <td><?php echo $producto ?></td>
                         <td><?php echo " $precio € " ?></td>
                         <th><?php echo  $cantidad ?></th>
-                        <th><?php echo $newCesta ?></th>
+                        <th><?php echo  "$subtotale € " ?></th>
                     </tr>
 
 
                 <?php
                 }
-                ?>
+                ?>  
+               
             </table>
         </div>
     </div>
+                
 
 
 

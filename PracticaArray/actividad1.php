@@ -20,10 +20,10 @@
 
 
     $cesta = [
-        ["platanos",  3],
-        ["vaso",  2],
-        ["teclado Hyper x",  90],
-        ["perfume", 45]
+        ["Pringels",  3],
+        ["Vaso",  2],
+        ["Teclado Hyper x",  99],
+        ["Perfume Hugo BOSS", 45]
     ];
     $producto = array_column($cesta, 0);
     $precio = array_column($cesta, 1);
@@ -37,7 +37,6 @@
                 <tr>
                     <th>Producto</th>
                     <th>Precio</th>
-                    <th>Total Precio</th>
                     <th>Total Productos</th>
                 </tr>
 
