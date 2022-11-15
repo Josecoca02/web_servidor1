@@ -15,19 +15,68 @@
     // una columna que indique si la persona es menor de edad, mayor de edad, o está jubilada (+65 años). 
     //  Utiliza funciones y la estructura match.
 
-    // $Personas =[
-    //     ["cristiano ronaldo", "Dos Santos", []],
-    //     ["Lionel Andrés", "Messi Cuccittini", []],
-    //     ["Francisco", "Franco", []],
-    //     ["Hasbulla", "Magomedov", []]
-    // ];
+    //     $array = range(0, 9);
+//         foreach ($array as &$v) {
+//     $v = rand(0, 100);
+// }
+//         print_r($array);
 
-    $array = range(0, 9);
-        foreach ($array as &$v) {
-    $v = rand(0, 100);
-}
-        print_r($array);
-    ?>
+
+    //FUNCIONES
+    function edadtipo(int $Age)
+        {
+            $Age = match (true) {
+                $Age < 18 => "Menor de edad",
+                $Age >= 18 and $Age < 65 => "Mayor de edad",
+                $Age >= 65 and $Age < 100 => "Juvilad@",
+                default => "Sobresaliente"
+            };
+            return $Age;
+        }
+        ?>
+    <?
+
+    $personas =[
+        ["cristiano ronaldo", "Dos Santos", []],
+        ["Lionel Andrés", "Messi Cuccittini", []],
+       ["Francisco", "Franco", []],
+       ["Hasbulla", "Magomedov", []]
+     ];
+     $Nombre = array_column($personas, 0);
+     $Apellidos = array_column($personas, 1);
+     $Age = range(0, 9);
+          foreach ($array as &$v) {
+        $v = rand(0, 100);
+          }
+     array_multisort($Nombre, $Apellidos, $Age, $personas);
+     ?>
+     <div class="row">
+         <div class="col-7">
+                <table class="table">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Edad</th>
+            <th>Tipo EDAD</th>
+        </tr>
+        <?php
+                foreach ($personas as $personas) {
+                    list($Nombre, $Apellidos, $Age) = $personas;
+                    
+                ?>
+            <tr>
+                <td><?php echo $Nombre ?></td>
+                <td><?php echo $Apellidos ?></td>
+                <td><?php echo $Age ?></td>
+                <td><?php echo edadtipo( $Age)?> </td>
+            </tr>
+            <?php
+                }
+                ?>
+            </table>
+        </div>
+    </div>
+
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

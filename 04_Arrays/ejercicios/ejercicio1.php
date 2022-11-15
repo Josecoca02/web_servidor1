@@ -16,8 +16,8 @@
     }
 
     // BAREJEAR LAS CARTAS Y ORDENARLAS
-    shuffle($numerospares);
-    asort($numerospares);
+    // shuffle($numerospares);
+    // asort($numerospares);
 
 
     ?>

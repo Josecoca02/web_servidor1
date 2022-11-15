@@ -10,7 +10,7 @@
 </head>
 
 <body>
-     <?php
+    <?php
     $cesta = [
         ["Pringels",  3, 3],
         ["Vaso",  2, 5],
@@ -20,15 +20,10 @@
     $producto = array_column($cesta, 0);
     $precio = array_column($cesta, 1);
     $cantidad = array_column($cesta, 2);
-//     $newCesta = [];
-// for($i = 0; $i < count($cesta); $i++){
-//    array_push($newCesta, [$cesta[$i][0], $cesta[$i][1], $cesta[$i][2], $cesta[$i][1]*$cesta[$i][2]]);
-// }
-    
     $totalprecio = array_sum($precio);
     $totalproducto =  count($producto);
+    $numeroproductos = array_sum($cantidad);
     array_multisort($producto, SORT_ASC,  $precio, $cesta);
-   
     ?>
     <div class="row">
         <div class="col-5">
@@ -40,13 +35,15 @@
                     <th>Subtotal</th>
                 </tr>
 
+
                 <?php
+                $preciototal = 0;
+
                 foreach ($cesta as $cesta) {
                     list($producto, $precio, $cantidad) = $cesta;
-                    // $cantidadTotal = $cantidadTotal + $cantidad;
-                    $subtotale = $precio*$cantidad;
-                    // $preciototale = $preciototale + $subtotale;
-                    // $nProductos = $nProductos + $cantidad;
+                    $subtotale = $precio * $cantidad;
+                    $preciototal =  $preciototal + $subtotale;
+
                 ?>
                     <tr>
                         <td><?php echo $producto ?></td>
@@ -54,19 +51,29 @@
                         <th><?php echo  $cantidad ?></th>
                         <th><?php echo  "$subtotale € " ?></th>
                     </tr>
-
-
                 <?php
                 }
-                ?>  
-               
+                ?>
+
             </table>
         </div>
     </div>
-                
 
+    <div class="row">
+        <div class="col-5">
+            <table class="table">
+                <tr>
+                    <th>TOTAL</th>
+                    <th>Nº Productos</th>
+                </tr>
+                <tr>
+                    <td><?php echo  $preciototal ?></td>
+                    <td><?php echo $numeroproductos ?></td>
+                </tr>
 
-
+            </table>
+        </div>
+    </div>
 
 
 
