@@ -66,3 +66,13 @@ p.precio precio_unitario, cp.fecha
 	FROM clientes c
     JOIN clientes_prendas cp ON c.id = cp.cliente_id
     JOIN prendas p ON p.id = cp.prenda_id);
+
+    USE  db_usuarios;
+
+CREATE TABLE usuarios (
+	id INT PRIMARY KEY AUTO_INCREMENT, 
+    usuario VARCHAR(20) UNIQUE NOT NULL,
+    contrasena VARCHAR(60) NOT NULL,
+    nombre VARCHAR(40) NOT NULL
+    
+);
