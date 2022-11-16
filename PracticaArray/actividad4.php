@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,75 +9,81 @@
 
     <title>Actividad4</title>
 </head>
+
 <body>
     <?php
     // Crea un array de dos dimensiones que contenga el nombre de cada persona, su apellido y su edad, 
     // que será un número aleatorio entre 0 y 100. Muestra los datos en una tabla que además contenga 
     // una columna que indique si la persona es menor de edad, mayor de edad, o está jubilada (+65 años). 
     //  Utiliza funciones y la estructura match.
-
-    //     $array = range(0, 9);
-//         foreach ($array as &$v) {
-//     $v = rand(0, 100);
-// }
-//         print_r($array);
-
+    //$edad = range(0, 9);
+    //foreach ($array as &$v) {
+    //$v = rand(0, 100);
+    //}
 
     //FUNCIONES
-    function edadtipo(int $Age)
-        {
-            $Age = match (true) {
-                $Age < 18 => "Menor de edad",
-                $Age >= 18 and $Age < 65 => "Mayor de edad",
-                $Age >= 65 and $Age < 100 => "Juvilad@",
-                default => "Sobresaliente"
-            };
-            return $Age;
-        }
-        ?>
-    <?
+    function edadtipoMatch(int $edad)
+    {
+        $edadtipo = match (true) {
+            $edad < 18 => "Menor de edad",
+            $edad >= 18 and $edad < 65 => "Mayor de edad",
+            $edad >= 65 and $edad < 100 => "Juvilad@",
+            default => "Muerto"
+        };
+        return $edadtipo;
+    }
 
-    $personas =[
-        ["cristiano ronaldo", "Dos Santos", []],
-        ["Lionel Andrés", "Messi Cuccittini", []],
-       ["Francisco", "Franco", []],
-       ["Hasbulla", "Magomedov", []]
-     ];
-     $Nombre = array_column($personas, 0);
-     $Apellidos = array_column($personas, 1);
-     $Age = range(0, 9);
-          foreach ($array as &$v) {
-        $v = rand(0, 100);
-          }
-     array_multisort($Nombre, $Apellidos, $Age, $personas);
-     ?>
-     <div class="row">
-         <div class="col-7">
-                <table class="table">
-        <tr>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Edad</th>
-            <th>Tipo EDAD</th>
-        </tr>
-        <?php
+
+    ?>
+
+    <?php
+    $personas = [
+        ["cristiano ronaldo", "Dos Santos", 0],
+        ["Lionel Andrés", "Messi Cuccittini", 86],
+        ["Francisco", "Franco", 0],
+        ["Hasbulla", "Magomedov", 0]
+    ];
+    $Nombre = array_column($personas, 0);
+    $Apellidos = array_column($personas, 1);
+    $edad = rand(0, 100);
+
+    array_multisort($Nombre, $Apellidos,  $personas);
+
+
+    ?>
+
+    <div class="row">
+        <div class="col-7">
+            <table class="table">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Edad</th>
+                    <th>Tipo Persona</th>
+                </tr>
+                <?php
+
+
                 foreach ($personas as $personas) {
-                    list($Nombre, $Apellidos, $Age) = $personas;
-                    
+                    list($Nombre, $Apellidos, $edad) = $personas;
                 ?>
-            <tr>
-                <td><?php echo $Nombre ?></td>
-                <td><?php echo $Apellidos ?></td>
-                <td><?php echo $Age ?></td>
-                <td><?php echo edadtipo( $Age)?> </td>
-            </tr>
-            <?php
+
+                    <tr>
+                        <td><?php echo $Nombre ?></td>
+                        <td><?php echo $Apellidos ?></td>
+                        <td><?php echo $edad ?></td>
+                        <td><?php echo edadtipoMatch($edad) ?></td>
+
+                    </tr>
+                <?php
                 }
                 ?>
+
             </table>
         </div>
     </div>
 
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
+
 </html>
