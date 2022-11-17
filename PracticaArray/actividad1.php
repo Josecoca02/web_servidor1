@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+<h1>Ejercicio 1</h1>
     <!-- Crea un array que almacene nombres de productos y sus respectivos precios.
  Muestra en una tabla los productos con sus precios, ordenados alfabéticamente por el nombre del producto. 
  Muestra también el precio total de todos los productos y cuántos productos hay en el array. -->
@@ -37,7 +37,7 @@
                 <tr>
                     <th>Producto</th>
                     <th>Precio</th>
-                    <th>Total Productos</th>
+                    
                 </tr>
 
                 <?php
@@ -47,16 +47,28 @@
                     <tr>
                         <td><?php echo $producto ?></td>
                         <td><?php echo " $precio $" ?></td>
-                        <th><?php echo  $totalprecio ?></th>
-                        <th><?php echo $totalproducto ?></th>
-
-
                     </tr>
 
 
                 <?php
                 }
                 ?>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-5">
+            <table class="table">
+                <tr>
+                    <th>TOTAL </th>
+                    <th>Nº Productos</th>
+                </tr>
+                <tr>
+                    <th><?php echo " $totalprecio € " ?></th>
+                    <th><?php echo $totalproducto ?></th>
+                </tr>
+
             </table>
         </div>
     </div>

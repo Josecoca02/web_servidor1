@@ -38,14 +38,14 @@
 
     <?php
     $personas = [
-        ["cristiano ronaldo", "Dos Santos", 0],
+        ["cristiano ronaldo", "Dos Santos", rand(0, 100)],
         ["Lionel Andrés", "Messi Cuccittini", 86],
-        ["Francisco", "Franco", 0],
-        ["Hasbulla", "Magomedov", 0]
+        ["Francisco", "Franco", rand(0, 100)],
+        ["Hasbulla", "Magomedov", rand(0, 100)]
     ];
     $Nombre = array_column($personas, 0);
     $Apellidos = array_column($personas, 1);
-    $edad = rand(0, 100);
+    $edad = 
 
     array_multisort($Nombre, $Apellidos,  $personas);
 
