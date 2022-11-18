@@ -8,6 +8,8 @@
     <title>Document</title>
 </head>
 <body>
+<?php require '../util/control_de_acceso.php' ?>
+
     <div class="container">
         <?php require 'header.php' ?>
         

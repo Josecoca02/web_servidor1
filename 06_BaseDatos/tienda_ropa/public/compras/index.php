@@ -8,7 +8,7 @@
     <title>Compras</title>
 </head>
 <body>
-    
+<?php require '../../util/control_de_acceso.php' ?>
 <?php require '../../util/base_de_datos.php' ?>
     <?php require '../header.php' ?>
 
@@ -41,13 +41,19 @@
                                 $fecha = $fila["fecha"];
                                 ?>
                                 <tr>
-                                    <td><?php echo $usuario ?></td>
+                                    <td><a href="./cliente_compras.php?usuario=<?php echo $usuario ?>"><?php echo $usuario ?></a></td>
                                     <td><?php echo $producto ?></td>
                                     <td><?php echo $cantidad ?></td>
                                     <td><?php echo $precio_unitario ?></td>
                                     <td><?php echo $fecha ?></td>
                                 </tr>
                                 <?php
+
+                                /*  CUANDO SE PULSE EN UN USUARIO
+                                    SE MOSTRARÁN LAS COMPRAS DE ESE
+                                    USUARIO Y EL TOTAL QUE HA GASTADO
+                                    (EN UN FICHERO NUEVO)
+                                */
                             }
                         }
                         ?>
@@ -56,6 +62,7 @@
             </div>
         </div>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

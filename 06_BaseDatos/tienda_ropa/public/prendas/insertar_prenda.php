@@ -8,7 +8,11 @@
     <title>Nueva Prenda</title>
 </head>
 <body>
+<?php require '../../util/control_de_acceso.php' ?>
+
     <?php
+            
+
          require '../../util/base_de_datos.php';
 
          if($_SERVER["REQUEST_METHOD"] == "POST") {

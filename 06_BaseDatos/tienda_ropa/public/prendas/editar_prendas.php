@@ -8,6 +8,8 @@
     <title>Document</title>
 </head>
 <body>
+<?php require '../../util/control_de_acceso.php' ?>
+
      <?php
             //HACER QUE SE EDITE EL FORMULARIO QUE HECMOS EN PRENDA Y 
             // SI QUEREMOS MODIFICAR ALGO SE MODIFIQUE
