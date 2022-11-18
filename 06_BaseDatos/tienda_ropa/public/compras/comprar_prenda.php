@@ -8,26 +8,41 @@
     <title>Document</title>
 </head>
 <body>
-<?php require '../header.php' ?>
+<?php require '../../util/control_de_acceso.php' ?>
+    <?php require '../header.php' ?>
     <?php require '../../util/base_de_datos.php' ?>
 
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $prenda_id= $_POST["prenda"];
+            $prenda_id = $_POST["prenda"];
             $cantidad = $_POST["cantidad"];
-            $cliente_id =  4;
-            $fecha = date('Y-m-d H:i:s');  // 2022-11-15  09 :25
+            //$cliente_id = 10;
+            $fecha = date('Y-m-d H:i:s');   //  2022-11-15 09:25
+
+            //  Buscar el id del cliente que ha iniciado sesión
+            $usuario = $_SESSION["usuario"];
+
+            $sql = "SELECT * FROM clientes WHERE usuario = '$usuario'";
+
+            $resultado = $conexion -> query($sql);
+
+            if ($resultado -> num_rows > 0) {
+                while ($fila = $resultado -> fetch_assoc()) {
+                    $cliente_id = $fila["id"];
+                }
+            }
+            //  Fin de la búsqueda del cliente
 
             $sql = "INSERT INTO clientes_prendas 
-            (cliente_id, prenda_id, cantidad, fecha)
-        VALUES ('$cliente_id', '$prenda_id', '$cantidad', '$fecha');";
+                (cliente_id, prenda_id, cantidad, fecha) 
+                VALUES 
+                ('$cliente_id', '$prenda_id', '$cantidad', '$fecha')";
 
-        if($conexion -> query($sql)== "TRUE") {
-            echo "<p>Compra realizada </p>";
-        }else {
-            echo "<p>Error al comprar </p>";
-        }
-            
+            if ($conexion -> query($sql) == "TRUE") {
+                echo "<p>Compra realizada</p>";
+            } else {
+                echo "<p>Error al comprar</p>";
+            }
         }
     ?>
 

@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <?php require 'header.php' ?>
+        
         <br>
         <h1>¡Bienvenid@ a nuestra tienda!</h1>
     </div>
