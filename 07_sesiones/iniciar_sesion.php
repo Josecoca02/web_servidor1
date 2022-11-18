@@ -9,58 +9,59 @@
     <title></title>
 </head>
 <body>
-        <?php require 'base_de_datos.php';  ?>
-        
-        <?php
-            if($_SERVER["REQUEST_METHOD"] == "POST")  {
-                $usuario = $_POST["usuario"];
-                $contrasena = $_POST["contrasena"];
-                
-                $sql="SELECT * FROM usuarios WHERE usuario='$usuario'";
-                $resultado = $conexion -> query($sql);
+        <?php  require 'base_de_datos.php' ?>
 
-                if($resultado -> num_rows > 0) {
-                    while($fila = $resultado -> fetch_assoc()) {
-                        $hash_contrasena = $fila["hash_contrasena"];
-                }
-                 //COMPROBAMOS QUE LOS SIMBOLOS DE HASH SON EL MISMO PARA VERIFICAR LA CONTRASEÑA
-                 $acceso_valido = 
-                    password_verify($contrasena, $hash_contrasena);
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usuario = $_POST["usuario"];
+    $contrasena = $_POST["contrasena"];
 
-                    if($acceso_valido == TRUE) {
-                        echo "<h2> !ACCESO VALIDO¡</2>";
+    $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
+    $resultado = $conexion -> query($sql);
 
-                    }else {
-                        echo "<h2>Contraseña equivocada</h2>";
-                    }
-
-            }
+    if ($resultado -> num_rows > 0) {
+        while ($fila = $resultado -> fetch_assoc()) {
+            $hash_contrasena = $fila["contrasena"];
+            $rol = $fila["rol"];
         }
-        ?>
+        $acceso_valido = 
+            password_verify($contrasena, $hash_contrasena);
 
-<div class="container">
-        <h1>Iniciar Sesion</h1>
+        if ($acceso_valido == TRUE) {
+            echo "<h2>¡ACCESO VÁLIDO!</h2>";
 
-        <div class="row">
-            <div class="col-6">
-                <form action="" method="post">
-                <div class="form-group mb-3">
-                        <label class="form-label">Usuario</label>
-                        <input class="form-control" name="usuario" type="text">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="form-label">Contraseña</label>
-                        <input class="form-control" name="contrasena" type="password">
-                    </div>
-                    <div class="form-group mb-3">
-                        <button class="btn btn-primary" type="submit">Iniciar sesión</button>
-                    </div>
-                </form>
+            session_start();
+            $_SESSION["usuario"] = $usuario;
+            $_SESSION["rol"] = $rol;
+
+            header('location: index.php');
+        } else {
+            echo "<h2>Contraseña equivocada</h2>";
+        }
+    }
+}
+?>
+
+<h1>Inicia sesión</h1>
+
+<div class="row">
+    <div class="col-6">
+        <form action="" method="post">
+            <div class="form-group mb-3">
+                <label class="form-label">Usuario</label>
+                <input class="form-control" name="usuario" type="text">
             </div>
-        </div>
+            <div class="form-group mb-3">
+                <label class="form-label">Contraseña</label>
+                <input class="form-control" name="contrasena" type="password">
+            </div>
+            <div class="form-group mb-3">
+                <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+            </div>
+        </form>
     </div>
-
-
+</div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

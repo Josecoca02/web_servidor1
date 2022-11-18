@@ -8,58 +8,67 @@
     <title>Registrarse</title>
 </head>
 <body>
-            <?php
-        require 'base_de_datos.php';
-            ?>
-        <?php
-            if($_SERVER["REQUEST_METHOD"] == "POST")  {
-                $usuario = $_POST["usuario"];
-                $contrasena = $_POST["contrasena"];
-                $nombre = $_POST["nombre"];
+            
+         <?php require 'base_de_datos.php' ?>
 
-                $hash_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
-                echo "<p>USUARIO: $usuario</p>";
-                echo "<p>CONTRASEÑA: $contrasena</p>";
-                echo "<p>NOMBRE: $nombre</p>";
-                echo "<p>Hash: $hash_contrasena</p>";
-
-            $sql =" INSERT INTO usuarios (usuario, contrasena, nombre)
-                        VALUES ('$usuario', '$hash_contrasena', '$nombre')";
-                    
-                if($conexion -> query($sql) == "TRUE") {
-                    echo "<p>Usuario Registrado</p>" ;
-
-                }else{
-                    echo "<p>Usuario no registrado</p>";
-                }
-
-            }
-            ?>
-    <div class="container">
-        <h1>Registrare</h1>
-
-        <div class="row">
-            <div class="col-6">
-                <form action="" method="post">
-                    <div class="form-group mb-3">
-                        <label class="form-label">Usuario</label>
-                        <input class="form-control" name="usuario" type="text">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="form-label">Contraseña</label>
-                        <input class="form-control" name="contrasena" type="password">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="form-label">Nombre</label>
-                        <input class="form-control" name="nombre" type="text">
-                    </div>
-                    <div class="form-group mb-3">
-                        <button class="btn btn-primary" type="submit">Registrarse</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+         <?php
+         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+             $usuario = $_POST["usuario"];
+             $contrasena = $_POST["contrasena"];
+             $nombre = $_POST["nombre"];
+             $rol = $_POST["rol"];
+     
+             $hash_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
+     
+             echo "<p>Usuario: $usuario</p>";
+             echo "<p>Contraseña: $contrasena</p>";
+             echo "<p>Nombre: $nombre</p>";
+             echo "<p>Hash: $hash_contrasena</p>";
+     
+             $sql = "INSERT INTO usuarios (usuario, contrasena, nombre, rol)
+                         VALUES ('$usuario', '$hash_contrasena', '$nombre', '$rol')";
+     
+             if ($conexion -> query($sql) == "TRUE") {
+                 echo "<p>Usuario registrado</p>";
+                 header("location: iniciar_sesion.php");
+             } else {
+                 echo "<p>Error en el registro</p>";
+             }
+         }
+         ?>
+     
+         <div class="container">
+             <h1>Regístrate</h1>
+     
+             <div class="row">
+                 <div class="col-6">
+                     <form action="" method="post">
+                         <div class="form-group mb-3">
+                             <label class="form-label">Usuario</label>
+                             <input class="form-control" name="usuario" type="text">
+                         </div>
+                         <div class="form-group mb-3">
+                             <label class="form-label">Contraseña</label>
+                             <input class="form-control" name="contrasena" type="password">
+                         </div>
+                         <div class="form-group mb-3">
+                             <label class="form-label">Nombre</label>
+                             <input class="form-control" name="nombre" type="text">
+                         </div>
+                         <div class="form-group mb-3">
+                             <select class="form-select" name="rol">
+                                 <option value="" selected disabled hidden>-- Selecciona un rol --</option>
+                                 <option value="administrador">Administrador</option>
+                                 <option value="usuario">Usuario</option>
+                             </select>
+                         </div>
+                         <div class="form-group mb-3">
+                             <button class="btn btn-primary" type="submit">Registrarse</button>
+                         </div>
+                     </form>
+                 </div>
+             </div>
+         </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
 </body>
