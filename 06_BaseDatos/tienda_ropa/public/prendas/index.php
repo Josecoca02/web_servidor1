@@ -25,6 +25,7 @@
                     <thead class="table-dark">
                         <tr>
                             <th>Nombre</th>
+                            <th>Imagen</th>
                             <th>Talla</th>
                             <th>Precio</th>
                             <th>Categoría</th>

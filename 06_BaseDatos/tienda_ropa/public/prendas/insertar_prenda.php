@@ -16,19 +16,73 @@
          require '../../util/base_de_datos.php';
 
          if($_SERVER["REQUEST_METHOD"] == "POST") {
-             $nombre = $_POST["nombre"];
-             $talla = $_POST["talla"];
-             $precio = $_POST["precio"];
-             if (isset($_POST["categoria"])) {
-                 $categoria = $_POST["categoria"];
+             $temp_nombre = depurar($_POST["nombre"]);
+             if (isset($_POST["talla"])){
+                $temp_talla = depurar($_POST["talla"]);
              } else {
-                 $categoria = "";
+                $temp_talla = "";
+             }
+             $temp_precio = depurar($_POST["precio"]);
+             if (isset($_POST["categoria"])) {
+                 $temp_categoria = depurar($_POST["categoria"]);
+             } else {
+                 $temp_categoria = "";
              }
              $file_name = $_FILES["imagen"]["name"];
              $file_temp_name = $_FILES["imagen"]["tmp_name"];
              $path = "../../resources/images/prendas/" . $file_name;
  
-             if (!empty($nombre) && !empty($talla) && !empty($precio)) {
+            // PONEMOS LAS RESTRICCIONES
+            //NOMBRE
+            if (empty($temp_nombre)) {
+                $err_nombre = "El Nombre es obligatorio";
+            } else {
+                if (strlen($temp_nombre) < 50) {
+                    $err_nombre = "El Nombre solo puede tener  50 caracteres";
+                } else {
+                    //  ¡ÉXITO!
+                    $nombre = $temp_nombre;
+                }
+            }
+            
+            //Precio
+        if (empty($temp_precio)) {
+            $err_precio = "El precio es obligatorio";
+        } else {
+            $temp_precio = filter_var($temp_precio, FILTER_VALIDATE_FLOAT);
+
+            if (!$temp_precio) {
+                $err_precio = "El precio debe ser un número";
+            } else {
+                $temp_precio = round($temp_precio, 2);
+                if ($temp_precio < 0) {
+                    $err_precio = "El precio no puede ser negativo";
+                } else if ($temp_precio >= 10000) {
+                    $err_precio = "El precio no puede ser igual o superior a 10000";
+                } else {
+                    //  ¡ÉXITO!
+                    $precio = $temp_precio;
+                }
+            }
+        }
+            //TALLA
+        if (empty($temp_talla)) {
+            $err_talla = "La Categoria es obligatoria";
+        } else {
+            $talla = $temp_talla;
+        }
+
+        //CATEGORIA 
+        if (empty($temp_categoria)) {
+            $err_categoria = "La Categoria es obligatoria";
+        } else {
+            $categoria = $temp_consolas;
+        }
+
+
+
+            
+             if (!empty($temp_nombre) && !empty($temp_talla) && !empty($temp_precio)) {
                  //  Subimos la imagen a la carpeta deseada
                  if (move_uploaded_file($file_temp_name, $path)) {
                      echo "<p>Fichero movido con éxito</p>";
@@ -40,10 +94,10 @@
                  $imagen = "/resources/images/prendas/" . $file_name;
                  if (!empty($categoria)) {
                      $sql = "INSERT INTO prendas (nombre, talla, precio, categoria, imagen)
-                         VALUES ('$nombre', '$talla', '$precio', '$categoria', '$imagen')";
+                         VALUES ('$temp_nombre', '$temp_talla', '$temp_precio', '$temp_categoria', '$imagen')";
                  } else {
                      $sql = "INSERT INTO prendas (nombre, talla, precio, imagen)
-                         VALUES ('$nombre', '$talla', '$precio', '$imagen')";
+                         VALUES ('$temp_nombre', '$temp_talla', '$temp_precio', '$imagen')";
                  }
                  
  
@@ -59,6 +113,12 @@
                  }
              }
          }
+         function depurar($dato) {
+            $dato = trim($dato);
+            $dato = stripslashes($dato);
+            $dato = htmlspecialchars($dato);
+            return $dato;
+        }
      ?>
  
      <div class="container">
@@ -72,6 +132,9 @@
                      <div class="form-group mb-3" >
                          <label class="form-label">Nombre</label>
                          <input class="form-control" type="text" name="nombre">
+                        <span class="error">
+                            <?php if(isset($err_nombre)) echo $err_nombre ?>
+                    </span>
                      </div>
                      <div class="form-group mb-3">
                          <label class="form-label">Talla</label>
@@ -83,10 +146,16 @@
                              <option value="L">L</option>
                              <option value="XL">XL</option>
                          </select>
+                         <span class="error">
+                            * <?php if (isset($err_talla)) echo $err_talla ?>
+                        </span>
                      </div>
                      <div class="form-group mb-3">
                          <label class="form-label">Precio</label>
                          <input class="form-control" type="text" name="precio">
+                         <span class="error">
+                            * <?php if (isset($err_precio)) echo $err_precio ?>
+                        </span>
                      </div>
                      <div class="form-group mb-3">
                          <label class="form-label">Categoría</label>
@@ -96,6 +165,9 @@
                              <option value="PANTALONES">Pantalones</option>
                              <option value="ACCESORIOS">Accesorios</option>
                          </select>
+                         <span class="error">
+                            * <?php if (isset($err_categoria)) echo $err_categoria ?>
+                        </span>
                      </div>
                      <div class="form-group mb-3">
                          <label class="form-label">Imagen</label>

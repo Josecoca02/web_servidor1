@@ -15,15 +15,15 @@
         <?php
         if ($_SESSION["rol"] == "administrador") {
         ?>
-        <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/prendas">Prendas</a>
-        <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/clientes">Clientes <span class="badge bg-success">New</span></a>
-        <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/compras">Compras</a>
+        <a class="nav-link" href="http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/prendas">Prendas</a>
+        <a class="nav-link" href="http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/clientes">Clientes <span class="badge bg-success">New</span></a>
+        <a class="nav-link" href="http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/compras">Compras</a>
         <?php
         }
         ?>
-        <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/compras/comprar_prenda.php">Nueva compra</a>
-        <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/compras/miscompras.php">Mis Compras</a>
-        <a class="nav-link" href="http://localhost/06_BaseDatos/tienda_ropa/public/desconectarse.php">Desconectarse</a>
+        <a class="nav-link" href="http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/compras/comprar_prenda.php">Nueva compra</a>
+        <a class="nav-link" href="http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/compras/mis_compras.php">Mis Compras</a>
+        <a class="nav-link" href="http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/desconectarse.php">Desconectarse</a>
         <a class="nav-link" href="">Bienvenid@ <?php echo $_SESSION["usuario"] ?></a>
       </div>
     </div>

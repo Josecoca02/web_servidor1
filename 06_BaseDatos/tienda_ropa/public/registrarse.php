@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conexion -> query($sql) == "TRUE") {
         echo "<p>Usuario registrado</p>";
-        header("location: http://localhost/06_BaseDatos/tienda_ropa/public/iniciar_sesion.php");
+        header("location: http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/iniciar_sesion.php");
     } else {
         echo "<p>Error en el registro</p>";
     }

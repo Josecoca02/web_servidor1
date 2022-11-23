@@ -35,7 +35,7 @@
                     $_SESSION["usuario"] = $usuario;
                     $_SESSION["rol"] = $rol;
 
-                    header('location: http://localhost/06_BaseDatos/tienda_ropa/public/');
+                    header('location: http://localhost/web_servidor1/06_BaseDatos/tienda_ropa/public/');
                 } else {
                     echo "<h2>Contraseña equivocada</h2>";
                 }
