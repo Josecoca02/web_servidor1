@@ -7,8 +7,6 @@
     <title>Info</title>
 </head>
 <body>
-    <h1>Información de consolas </h1>
-
-
+    <h1>Información de consolas</h1>
 </body>
 </html>
