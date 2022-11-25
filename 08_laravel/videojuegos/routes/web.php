@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsolasController;
+use App\Http\Controllers\VideojuegosController;
+
 
 
 /*
@@ -27,5 +29,13 @@ Route::get('/consolas',
 
 Route::get('/consolas/create', 
 [ConsolasController::class, 'create']);
+
+/* Route::get('/videojuegos',
+    [VideojuegosController::class, 'index']);
+
+Route::get('/videojuegos/create',
+    [VideojuegosController:: class, 'create']); */
+
+Route::resource('/videojuegos', VideojuegosController::class);
 
 
