@@ -21,6 +21,7 @@
                         <th>Generacion</th>
                         <th>Descripción</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,11 @@
                             <td>{{ $consola->anyo_salida}}</td>
                             <td>{{ $consola->generacion}}</td>
                             <td>{{ $consola->descripcion}}</td>
+                            <td>
+                                <form method="get" action="{{ route('consolas.show', ['consola' => $consola -> id]) }}">
+                                    <button class="btn btn-primary" type="submit">Ver</button>
+                                </form>
+                            </td>
                        </tr>
                        {{-- Comentario BLade--}}
                    @endforeach

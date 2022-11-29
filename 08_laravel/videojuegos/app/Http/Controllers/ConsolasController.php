@@ -51,7 +51,12 @@ class ConsolasController extends Controller
      */
     public function show($id)
     {
-        //
+        $consolas = Consola::find($id);
+        return view('consolas.show',
+        [
+            'consolas' => $consolas
+        ]
+        );
     }
 
     /**

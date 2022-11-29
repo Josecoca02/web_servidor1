@@ -46,7 +46,7 @@ class VideojuegosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) // lo que hace guarda los datados
     {
         $videojuego = new Videojuego;
         $videojuego -> titulo = $request-> input ('titulo');
@@ -100,7 +100,16 @@ class VideojuegosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $videojuego = Videojuego::find($id);
+        
+        $videojuego -> titulo = $request -> input('titulo');
+        $videojuego -> precio = $request -> input('precio');
+        $videojuego -> pegi = $request -> input('pegi');
+        $videojuego -> descripcion = $request -> input('descripcion');
+
+        $videojuego -> save();
+
+        return redirect('videojuegos');
     }
 
     /**
@@ -114,5 +123,23 @@ class VideojuegosController extends Controller
         DB::table('videojuegos')->where('id','=',$id)->delete();
 
         return redirect('videojuegos');
+    }
+    /**
+     *  BUSCAR TODOS LOS VIDEOJUEGOS QUE CONTENGAN 
+     * LA PALABRA introcudida en el bucador
+     * @param string $titulo
+     * @return \Illuminate\Http\Response
+     * 
+     */
+    public function search(Request $request ) {
+        $titulo = $request->input('titulo');
+        $videojuego = DB::table('videojuego') ->where('titulo', 'like', '%')
+        ->get();
+
+        return view('videojuegos/search',
+        [
+            'videojuego' => $videojuego
+        ]
+        );
     }
 }

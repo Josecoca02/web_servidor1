@@ -28,8 +28,6 @@
                 <button class="btn btn-secondary" type="submit">Buscar</button>
             </div>
                 
-        
-                
         <div class="row">
             <div class="col-12">
                 <table class="table">
