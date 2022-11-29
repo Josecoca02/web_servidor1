@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Consola;
 
 class ConsolasController extends Controller
 {
@@ -12,20 +13,13 @@ class ConsolasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $mensaje = "Esta es la lista de consolas";
-        $consolas =[
-            "Playstation 4",
-            "Playstation 5",
-            "Nintendo Switch",
-            "Xbox Series X"
-        ];
-        //AQUI IRIA LA LOGICAL DEL METODO
-        return view('consolas/index',[
-        'mensaje' => $mensaje,
-        'consolas' => $consolas
-    ]);
-        
+    {
+        $consolas = Consola::all();
+        return view('consolas.index',
+        [
+            'consolas' => $consolas
+        ]
+        );
     }
 
     /**
@@ -35,7 +29,7 @@ class ConsolasController extends Controller
      */
     public function create()
     {
-        return view('consolas/create'); 
+        return view('consolas/create');
     }
 
     /**

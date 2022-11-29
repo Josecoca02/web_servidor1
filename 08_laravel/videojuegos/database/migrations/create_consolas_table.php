@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('videojuegos', function (Blueprint $table) {
+        Schema::create('consolas', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo') ->unique();
-            $table->double('precio');
-            $table->integer('pegi');
+            $table->string('nombre')->unique();
+            $table->integer('anyo_salida');
+            $table->string('generacion');
             $table->string('descripcion');
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videojuegos');
+        Schema::dropIfExists('consolas');
     }
 };

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Videojuego;
+use DB; //PARA PODER HACER CONSULTAS EN LARVEL
 
 class VideojuegosController extends Controller
 {
@@ -14,21 +15,19 @@ class VideojuegosController extends Controller
      */
     public function index()
     {
-        /* $videojuegos = [
-            ["call of Duty", 60, 18, "Este es el call of duty"],
-            ["pokemon Purpura", 50, 7, "Este es el Pokemon españita"]
-        ]; */
+
+        // $videojuegos = [
+        //     ["Call of Duty", 60, 18, "Este es el call of duty"],
+        //     ["Pokemon Purpura", 50, 3, "Este es el Pokemon Purpura"]
+        // ];
 
         $videojuegos = Videojuego::all();
-
-        $mensaje = "AQUI TENEMOS UN LISTADO DE VIDEOJUEGOS";
-
-        return view('videojuegos/index',
+        $mensaje= "Aqui tenemos un listado de games";
+        return view('videojuegos/index', 
         [
-             "videojuegos" => $videojuegos,
+            "videojuegos" => $videojuegos,
             "mensaje" => $mensaje
-        ]
-        );
+        ]);
     }
 
     /**
@@ -38,7 +37,7 @@ class VideojuegosController extends Controller
      */
     public function create()
     {
-        return view('videojuegos/create');
+         return view('videojuegos/create');
     }
 
     /**
@@ -50,12 +49,12 @@ class VideojuegosController extends Controller
     public function store(Request $request)
     {
         $videojuego = new Videojuego;
-        $videojuego -> titulo = $request-> input('titulo');
-        $videojuego -> precio = $request-> input('precio');
-        $videojuego -> pegi = $request-> input('pegi');
-        $videojuego -> descripcion = $request-> input('descripcion');
+        $videojuego -> titulo = $request-> input ('titulo');
+        $videojuego -> precio = $request-> input ('precio');
+        $videojuego -> pegi = $request-> input ('pegi');
+        $videojuego -> descripcion = $request-> input ('descripcion');
 
-        $videojuego -> save();
+        $videojuego ->save();
 
         return redirect('videojuegos');
     }
@@ -68,7 +67,12 @@ class VideojuegosController extends Controller
      */
     public function show($id)
     {
-        //
+        $videojuego = Videojuego::find($id); // ESTO ES COMO select * from videojuego para ver todos los videojuegos que esten en la bases de datos
+        return view('videojuegos/show',
+        [
+            'videojuego' => $videojuego
+        ]
+        );
     }
 
     /**
@@ -79,7 +83,12 @@ class VideojuegosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $videojuego = Videojuego::find($id);
+        return view('videojuegos/edit',
+            [
+                'videojuego' => $videojuego
+            ]
+        );
     }
 
     /**
@@ -100,8 +109,10 @@ class VideojuegosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) //METODO PARA BORRAR
     {
-        //
+        DB::table('videojuegos')->where('id','=',$id)->delete();
+
+        return redirect('videojuegos');
     }
 }
