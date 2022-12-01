@@ -11,45 +11,25 @@
 </head>
 
 <body>
+    <h1> Numero de 1 a 50 menos los divisibles entre 3</h1>
     <?php
-    /* 
-
-            $numerospares = [];
-
-            for ($i=0; $i<=50; $i +=2){
-                $numerospares[] = $i;
-            }
-
-
-
-
-            ?>
-            <ul>
-                <?php
-                for ($i = 0; $i < count($numerospares);$i++) {
-                ?>
-                    <li><?php echo $numerospares[$i] ?></li>
-                <?php
-                }
-                ?>
-            </ul> */
-
-
     $numeros = [];
-
     for ($i = 0; $i <= 50; $i++) {
         $numeros[] = $i;
     }
     ?>
     <ul>
-        <?php
-        for ($i = 0; $i < count($numeros); $i++) {
-           
-        ?>
-            <li><?php echo $numeros [$i]?></li>
-        <?php
+    <?php
+    foreach ($numeros as $divisible3 => $numerico) {
+        if ($numerico%3==0){
+                unset($numeros[$numerico]);
         }
-        ?>
+    }
+        foreach ($numeros as $divisible3 => $numerico) {
+            echo "<li>" . $numerico . "</li>";
+        }
+        
+    ?>
     </ul>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
