@@ -10,7 +10,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Consolas</h1>
+        <h1>Index de Consolas</h1>
+        <a href="{{ route('consolas.create') }}" class="btn btn-success">
+            Crear Consola
+        </a>
+        
         <div class="row">
             <div class="col-12">
                 <table class="table">
@@ -20,8 +24,7 @@
                         <th>Año de Salida</th>
                         <th>Generacion</th>
                         <th>Descripción</th>
-                        <th></th>
-                        <th></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +38,13 @@
                                 <form method="get" action="{{ route('consolas.show', ['consola' => $consola -> id]) }}">
                                     <button class="btn btn-primary" type="submit">Ver</button>
                                 </form>
+                            </td>
+                            <td>
+                                    <form method="post" action="{{ route('consolas.destroy', ['consola' => $consola -> id]) }}">
+                                        @csrf 
+                                        {{ method_field('DELETE') }}
+                                        <button class="btn btn-danger" type="submit">Borrar</button>
+                                    </form>
                             </td>
                        </tr>
                        {{-- Comentario BLade--}}

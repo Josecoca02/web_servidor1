@@ -13,6 +13,7 @@
         <p>Título: {{ $videojuego -> titulo }}</p>
         <p>Precio: {{ $videojuego -> precio }}</p>
         <p>PEGI: {{ $videojuego -> pegi }}</p>
+        <p>Compañia: {{ $videojuego -> compania}}</p>
         <p>Descripción: {{ $videojuego -> descripcion }}</p>
         <form method="GET" action="{{ route('videojuegos.edit', ['videojuego' => $videojuego -> id]) }}">
             <button class="btn btn-primary" type="submit">Editar</button>

@@ -23,9 +23,7 @@ Route::get('/', function () {
 Route::resource('/consolas',
     ConsolasController::class);
 
-Route::get('/consolas/info', function () {
-    return view('consolas/info');
-});
+
 
 // Route::get('/videojuegos',
 //     [VideojuegosController::class, 'index']);

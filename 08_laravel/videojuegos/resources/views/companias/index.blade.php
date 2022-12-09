@@ -11,25 +11,50 @@
 </head>
 <body>
      <div class="container">
-        <h1>Compañias de videojuegos</h1>
+        <h1> Index de Compañias</h1>
+        <a href="{{ route('companias.create') }}" class="btn btn-success">
+            Crear compañias
+        </a>
         <div class="row">
             <div class="col-12">
                 <table class="table">
                 <thead>
                     <tr>
-                        <th>Titulo</th>
+                        <th>Nombre</th>
                         <th>Sede</th>
                         <th>fecha de fundacion</th>
                     </tr>
                 </thead>
                 <tbody>
                    @foreach ($companias as $compania)
-                       <tr>
+                       <tr class="table table-dark">
                             <td>{{ $compania ->nombre}}</td>
                             <td>{{ $compania ->sede}}</td>
                             <td>{{ $compania ->fecha_fundacion}}</td>
+                            <td>
+                                <form method="get" action="{{ route('companias.show', ['compania' => $compania -> id]) }}">
+                                    <button class="btn btn-primary" type="submit">Ver</button>
+                                </form>
+                            </td>
+                            <td>
+                                    <form method="post" action="{{ route('companias.destroy', ['compania' => $compania -> id]) }}">
+                                        @csrf 
+                                        {{ method_field('DELETE') }}
+                                        <button class="btn btn-danger" type="submit">Borrar</button>
+                                    </form>
+                            </td>
                            
                        </tr>
+                       @php
+                            $videojuegos = $compania -> videojuegos;
+                       @endphp
+                       @foreach ($videojuegos as $videojuego)
+                                <tr class="table table-light">
+                                    <td>{{ $videojuego -> titulo  }}</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                       @endforeach
                        {{-- Comentario BLade--}}
                    @endforeach
                 </tbody>

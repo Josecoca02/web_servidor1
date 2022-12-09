@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Compania;
+use DB;
 
 class CompaniasController extends Controller
 {
@@ -30,7 +31,7 @@ class CompaniasController extends Controller
      */
     public function create()
     {
-        //
+        return view('companias/create');
     }
 
     /**
@@ -41,7 +42,14 @@ class CompaniasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $compania = new Compania;
+        $compania -> nombre = $request-> input ('nombre');
+        $compania -> sede = $request-> input ('sede');
+        $compania -> fecha_fundacion = $request-> input ('fecha_fundacion');
+
+        $compania ->save();
+
+        return redirect('companias');
     }
 
     /**
@@ -52,7 +60,12 @@ class CompaniasController extends Controller
      */
     public function show($id)
     {
-        //
+        $compania = Compania::find($id);
+        return view('companias/show',
+        [
+            'compania' => $compania
+        ]
+        );
     }
 
     /**
@@ -86,6 +99,8 @@ class CompaniasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('companias')->where('id','=',$id)->delete();
+
+        return redirect('companias');
     }
 }

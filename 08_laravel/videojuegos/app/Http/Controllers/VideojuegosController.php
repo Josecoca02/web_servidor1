@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Videojuego;
+use App\Models\Compania;
 use DB; //PARA PODER HACER CONSULTAS EN LARVEL
 
 class VideojuegosController extends Controller
@@ -37,7 +38,12 @@ class VideojuegosController extends Controller
      */
     public function create()
     {
-         return view('videojuegos/create');
+        $companias = Compania::all();  //para sacar las companias que haya en lac base de datos y se muestre para eliegira la hora de crear y se pone arriab use App\Models\Compania;
+         return view('videojuegos/create',
+        [
+            'companias' => $companias
+        ]
+        );
     }
 
     /**
@@ -53,6 +59,7 @@ class VideojuegosController extends Controller
         $videojuego -> precio = $request-> input ('precio');
         $videojuego -> pegi = $request-> input ('pegi');
         $videojuego -> descripcion = $request-> input ('descripcion');
+        $videojuego -> compania_id = $request-> input ('compania_id');
 
         $videojuego ->save();
 
@@ -67,10 +74,12 @@ class VideojuegosController extends Controller
      */
     public function show($id)
     {
+        $companias = Compania::find($id);
         $videojuego = Videojuego::find($id); // ESTO ES COMO select * from videojuego para ver todos los videojuegos que esten en la bases de datos
         return view('videojuegos/show',
         [
-            'videojuego' => $videojuego
+            'videojuego' => $videojuego,
+            'companias' => $companias
         ]
         );
     }
@@ -83,10 +92,13 @@ class VideojuegosController extends Controller
      */
     public function edit($id)
     {
+        
         $videojuego = Videojuego::find($id);
         return view('videojuegos/edit',
             [
-                'videojuego' => $videojuego
+                'videojuego' => $videojuego,
+                
+                
             ]
         );
     }
@@ -131,15 +143,18 @@ class VideojuegosController extends Controller
      * @return \Illuminate\Http\Response
      * 
      */
-    public function search(Request $request ) {
-        $titulo = $request->input('titulo');
-        $videojuego = DB::table('videojuego') ->where('titulo', 'like', '%')
-        ->get();
+    public function search(Request $request) {
+
+        $titulo = $request -> input('titulo');
+        
+        $videojuegos = DB::table('videojuegos')
+            ->where('titulo', 'like', '%' . $titulo . '%')
+            ->get();
 
         return view('videojuegos/search',
-        [
-            'videojuego' => $videojuego
-        ]
+            [
+                'videojuegos' => $videojuegos
+            ]
         );
     }
 }

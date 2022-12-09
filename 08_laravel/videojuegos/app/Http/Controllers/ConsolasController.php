@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Consola;
+use DB;
 
 class ConsolasController extends Controller
 {
@@ -15,7 +16,8 @@ class ConsolasController extends Controller
     public function index()
     {
         $consolas = Consola::all();
-        return view('consolas.index',
+        $mensaje= "Aqui tenemos un listado de Consolas";
+        return view('consolas/index',
         [
             'consolas' => $consolas
         ]
@@ -40,7 +42,15 @@ class ConsolasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $consola = new Consola;
+        $consola -> nombre = $request-> input ('nombre');
+        $consola -> anyo_salida = $request-> input ('anyo_salida');
+        $consola -> generacion = $request-> input ('generacion');
+        $consola -> descripcion = $request-> input ('descripcion');
+
+        $consola ->save();
+
+        return redirect('consolas');
     }
 
     /**
@@ -51,10 +61,10 @@ class ConsolasController extends Controller
      */
     public function show($id)
     {
-        $consolas = Consola::find($id);
-        return view('consolas.show',
+        $consola = Consola::find($id);
+        return view('consolas/show',
         [
-            'consolas' => $consolas
+            'consola' => $consola
         ]
         );
     }
@@ -67,7 +77,12 @@ class ConsolasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $consola = Consola::find($id);
+        return view('consolas/edit',
+            [
+                'consola' => $consola
+            ]
+        );
     }
 
     /**
@@ -79,7 +94,7 @@ class ConsolasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -90,6 +105,8 @@ class ConsolasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('consolas')->where('id','=',$id)->delete();
+
+        return redirect('consolas');
     }
 }
