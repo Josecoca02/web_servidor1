@@ -48,6 +48,7 @@
                             <th>PEGI</th>
                             <th>Descripción</th>
                             <th>Compañia</th>
+                            <th>Consolas</th>
                             <th></th>
                             <th></th>
                         </tr>

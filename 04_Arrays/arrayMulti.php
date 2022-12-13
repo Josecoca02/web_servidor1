@@ -54,8 +54,8 @@
             list($nombre, $consola, $precio) = $juego;
         ?>
             <tr>
-                <td><?php echo $nombre ?></td>
-                <td><?php echo $consola ?></td>
+                <td><?php echo "".$nombre ?></td>
+                <td><?php echo "  ".$consola ?></td>
                 <td><?php echo $precio ?></td>
             </tr>
         <?php 

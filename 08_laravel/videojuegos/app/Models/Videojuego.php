@@ -12,4 +12,15 @@ class Videojuego extends Model
     public function compania() { //un videojuego solo puede pertenecer a una compania
         return $this->belongsTo(Compania::class);
     }
+
+    //Tan bien conocido como pivot table 
+    // RELACION MUCHOS A MUCHOS  de videojuegos puede estar en varias consolas y varias consolas pueden tener varios videojuego
+    public function consolas() {
+        return $this->belongsToMany(
+            Consola::class,
+            'consolas_videojuegos',
+            'videojuego_id',
+            'consola_id'
+        );
+    }
 }
