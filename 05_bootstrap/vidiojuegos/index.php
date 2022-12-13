@@ -92,7 +92,7 @@
                     $descripcion = $temp_descripcion;
                 }
             }
-
+                //Validacion de consola
             if (empty($temp_consola)) {
                 $err_consola = "La consola es obligatoria";
             } else {
