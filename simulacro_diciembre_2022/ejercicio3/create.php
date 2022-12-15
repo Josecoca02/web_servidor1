@@ -19,38 +19,6 @@
 
                 if (!empty($nombre) && !empty($edad) && !empty($genero));
 
-                // //VALIDACION DE NOMBRE
-                // if (empty($temp_nombre)) {
-                //     $err_nombre ="El campo es obligatorio";
-                // } else {
-                //     $pattern ="/^[a-zA-Z áéíóúÁÉÍÓÚñÑ]+$/";
-            
-                //     if (!preg_match($pattern, $temp_nombre)) {
-                //         $err_nombre = "El campo solo puede tener letras.";
-                //     }else { 
-                //      $nombre = $temp_nombre;
-                //     }
-                // }
-                //     //Validacion de genero
-                //     if (empty($temp_genero)) {
-                //         $err_genero = "La consola es obligatoria";
-                //     } else {
-                //         $genero = $temp_genero;
-                //     }
-                // //VALIDACION DE EDAD
-                // if(empty($temp_edad)) {
-                //         $err_edad = "EL campo edad es obligatorio";
-                //     } else {
-                //         if(!is_numeric($temp_edad)) {
-                //             $err_edad= "La edad debe ser un numero ";
-                //         }else {
-                //             if ($temp_edad < 0) {
-                //                 $err_edad = "No no puede ser negativo la EDAD";
-                //             }else {
-                //                 $edad =$temp_edad ;
-                //          }
-                //      }
-                // } 
                           //  Insertamos la prenda en la base de dato
 
                           $sql = "INSERT INTO personajes (nombre, edad, genero, titulo)
@@ -65,41 +33,7 @@
                             echo "<p>Error al insertar</p>";
                          }
     }
-        //   function depurar($dato) {
-        //      $dato = trim($dato);
-        //     $dato = stripslashes($dato);
-        //     $dato = htmlspecialchars($dato);
-        //     return $dato;
-        //  }
-
-        // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //     $usuario = $_POST["usuario"];
-        //     $nombre = $_POST["nombre"];
-        //     $primer_apellido = $_POST["primer_apellido"];
-        //     $segundo_apellido = $_POST["segundo_apellido"];
-        //     $fecha_nacimiento = $_POST["fecha_nacimiento"];
-
-        //     if (!empty($usuario) && !empty($nombre) && 
-        //         !empty($primer_apellido && 
-        //         !empty($fecha_nacimiento))) {
-
-        //         $segundo_apellido = 
-        //             !empty($segundo_apellido) ? "'$segundo_apellido'" : "NULL";
-    
-
-        //         $sql = "INSERT INTO clientes (usuario, nombre, 
-        //             primer_apellido, segundo_apellido, 
-        //             fecha_nacimiento) VALUES ('$usuario', '$nombre',
-        //             '$primer_apellido', $segundo_apellido,
-        //             '$fecha_nacimiento')";
-
-        //         if ($conexion -> query($sql) == "TRUE") {
-        //             echo "<p>Cliente insertado</p>";
-        //         } else {
-        //             echo "<p>Error al insertar</p>";
-        //         }
-        //     }
-        // }
+        
     ?>
 
 

@@ -1,0 +1,65 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    background-color: rgb(23, 50, 30);
+}
+span.error {
+    color: rgb(253, 53, 53);
+    font-family: 'Times New Roman';
+}
+.container {
+    width: 400px;
+    background: rgb(4, 45, 4);
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    font-family: 'comic Sans';
+    color:white;
+    border-radius: 20px;
+
+}
+
+.container h2 {
+    font-size: 30px;
+    margin-bottom:  20px;
+    color: blanchedalmond;
+    text-decoration: underline;
+}
+
+.container label {
+    width: 100px;
+    background-color: rgb(70, 188, 235) ;
+    padding: 4px;
+    border-radius: 3px;
+    margin-bottom: 18px;
+    border: 1px solid gold;
+    font-size: 13px;
+}
+.container input {
+    width: auto;
+    background-color: rgb(232, 213, 106);
+    border-radius: 5px;
+    padding: 3px;
+    
+}
+
+.container select[class = "edad_recomendada"] {
+    border: 1px solid gold;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    color:  #F29B30;
+}
+p{
+    width: 250px;
+    text-align: center;
+    color: gold;
+    background-color: black;
+    margin: auto;
+}
