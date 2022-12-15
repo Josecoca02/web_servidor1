@@ -29,7 +29,8 @@
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT * FROM personajes";
+                        //ORDER BY TITULO ASC , NOMBRE PARA ORDENAR LA TABLA
+                        $sql = "SELECT * FROM personajes ORDER BY titulo ASC, nombre ASC ";
                         $resultado = $conexion -> query($sql);
 
                         if ($resultado -> num_rows > 0) {
