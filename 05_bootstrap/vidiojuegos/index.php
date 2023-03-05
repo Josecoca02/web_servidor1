@@ -158,7 +158,7 @@
         </div>
         <div>
         <label class="form-label">Precio</label>
-         <input class="form-control type="text" name="precio">
+         <input class="form-control" type="text" name="precio">
             <span class="error">
                  <?php if(isset($err_precio)) echo $err_precio ?>
             </span>

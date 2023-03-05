@@ -42,7 +42,7 @@
                 ?>
                     <tr>
                         <td><?php echo $titulo ?></td>
-                        <td><?php echo $edadreco ?></td>
+                        <td><?php echo "+", $edadreco, " Años"?></td>
                         <td><?php echo $n_jugadores ?></td>
                         <td><?php echo $marca ?></td>
                     </tr>
@@ -73,7 +73,7 @@
                 ?>
                     <tr>
                         <td><?php echo $titulo ?></td>
-                        <td><?php echo $edadreco ?></td>
+                        <td><?php echo "+", $edadreco, " Años" ?></td>
                         <td><?php echo $n_jugadores ?></td>
                         <td><?php echo $marca ?></td>
                     </tr>
